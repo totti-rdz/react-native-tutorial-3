@@ -7,7 +7,7 @@ import { CATEGORIES } from "../data/dummy-data";
 const renderCategoryItem = (itemData) => <CategoryGridTile title={itemData.item.title} color={itemData.item.color} />;
 
 const CategoriesScreen = () => {
-  return <FlatList data={CATEGORIES} keyExtractor={(item) => item.id} renderItem={renderCategoryItem} />;
+  return <FlatList data={CATEGORIES} keyExtractor={(item) => item.id} renderItem={renderCategoryItem} numColumns={2} />;
 };
 export default CategoriesScreen;
 
