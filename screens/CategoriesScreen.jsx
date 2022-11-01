@@ -4,7 +4,12 @@ import CategoryGridTile from "../components/CategoryGridTile";
 
 import { CATEGORIES } from "../data/dummy-data";
 
-const renderCategoryItem = (itemData) => <CategoryGridTile title={itemData.item.title} color={itemData.item.color} />;
+const renderCategoryItem = (itemData) => {
+  const pressHandler = () => {
+    console.log("pressed");
+  };
+  return <CategoryGridTile title={itemData.item.title} color={itemData.item.color} onPress={pressHandler} />;
+};
 
 const CategoriesScreen = () => {
   return <FlatList data={CATEGORIES} keyExtractor={(item) => item.id} renderItem={renderCategoryItem} numColumns={2} />;
