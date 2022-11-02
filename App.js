@@ -24,7 +24,8 @@ export default function App() {
           <Stack.Screen
             name="MealsOverview"
             component={MealsOverviewScreen}
-            options={({ route }) => ({ title: route.params.categoryId })}
+            // not the best option for this case of getting the dynamic title as only the categoryId is available here, see MealsOverviewScreen for another option with navigation.setOptions(OPTIONS_OBJECT)
+            // options={({ route }) => ({ title: route.params.categoryId })}
           />
         </Stack.Navigator>
       </NavigationContainer>
