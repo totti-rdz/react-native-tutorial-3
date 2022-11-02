@@ -16,14 +16,14 @@ const MealsOverviewScreen = ({ route, navigation }) => {
   }, [catId, navigation]);
 
   const renderMealItem = (itemData) => {
-    const { title, imageUrl, duration, complexity, affordability } = itemData.item;
+    const { title, imageUrl, duration, complexity, affordability, id } = itemData.item;
     const mealItemProps = {
       title,
       imageUrl,
       duration,
       complexity,
       affordability,
-      onPress: () => navigation.navigate("MealDetails", { id: itemData.item.id }),
+      mealId: id,
     };
     return <MealItem {...mealItemProps} />;
   };
