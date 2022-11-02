@@ -23,9 +23,9 @@ const MealsOverviewScreen = ({ route, navigation }) => {
       duration,
       complexity,
       affordability,
+      onPress: () => navigation.navigate("MealDetails", { id: itemData.item.id }),
     };
-    const onPress = () => navigation.navigate("MealDetails", { id: itemData.item.id });
-    return <MealItem {...mealItemProps} onPress={onPress} />;
+    return <MealItem {...mealItemProps} />;
   };
 
   return (
