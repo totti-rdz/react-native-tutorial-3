@@ -8,9 +8,17 @@ const MealsOverviewScreen = ({ route }) => {
 
   const displayedMeals = MEALS.filter((mealItem) => mealItem.categoryIds.indexOf(catId) >= 0);
 
-  const renderMealItem = (itemData) => (
-    <MealItem title={itemData.item.title} imageUrl={itemData.item.imageUrl}/>
-  );
+  const renderMealItem = (itemData) => {
+    const { title, imageUrl, duration, complexity, affordability } = itemData.item;
+    const mealItemProps = {
+      title,
+      imageUrl,
+      duration,
+      complexity,
+      affordability,
+    };
+    return <MealItem {...mealItemProps} />;
+  };
 
   return (
     <View style={styles.container}>
