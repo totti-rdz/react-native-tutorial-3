@@ -1,5 +1,5 @@
 import { useLayoutEffect } from "react";
-import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Button, Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import Subtitle from "../components/MealDetail/Subtitle";
 import List from "../components/MealDetail/List";
 import MealDetails from "../components/MealDetails";
@@ -12,32 +12,34 @@ const MealDetailScreen = ({ route, navigation }) => {
     (meal) => meal.id === mealId
   );
 
+  const handleHeaderButtonPress = () => console.log("HeaderButton pressed");
+
   useLayoutEffect(() => {
-    navigation.setOptions({ title: title });
+    navigation.setOptions({ title: title, headerRight: () => <Button title="Tap me" onPress={handleHeaderButtonPress} /> });
   }, [mealId, navigation]);
 
   return (
-      <ScrollView style={styles.rootContainer}>
-        <Image source={{ uri: imageUrl }} style={styles.image} />
+    <ScrollView style={styles.rootContainer}>
+      <Image source={{ uri: imageUrl }} style={styles.image} />
 
-        <Text style={styles.title}>{title}</Text>
-        <View>
-          <MealDetails
-            duration={duration}
-            complexity={complexity}
-            affordability={affordability}
-            textStyle={styles.detailsText}
-          />
+      <Text style={styles.title}>{title}</Text>
+      <View>
+        <MealDetails
+          duration={duration}
+          complexity={complexity}
+          affordability={affordability}
+          textStyle={styles.detailsText}
+        />
+      </View>
+      <View style={styles.listOuterContainer}>
+        <View style={styles.listContainer}>
+          <Subtitle>ingredients</Subtitle>
+          <List arr={ingredients} />
+          <Subtitle>steps</Subtitle>
+          <List arr={steps} />
         </View>
-        <View style={styles.listOuterContainer}>
-          <View style={styles.listContainer}>
-            <Subtitle>ingredients</Subtitle>
-            <List arr={ingredients} />
-            <Subtitle>steps</Subtitle>
-            <List arr={steps} />
-          </View>
-        </View>
-      </ScrollView>
+      </View>
+    </ScrollView>
   );
 };
 export default MealDetailScreen;
